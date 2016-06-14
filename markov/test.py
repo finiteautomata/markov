@@ -21,7 +21,6 @@ class ProcessTest(unittest.TestCase):
         self.assertCountEqual(process.state_labels, ["a", "b"])
 
 
-
     def test_returning_initial_probability(self):
         transition_matrix = np.matrix([[0.5, 0.5], [0.25, 0.75]])
         initial_probabilities = np.array([0.4, 0.6])
