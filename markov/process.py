@@ -34,3 +34,10 @@ class Process:
 
         return self._initial_probabilities[pos]
 
+    # Returns the transition probability from 'origin' label to 'to' label
+    def transition_probability(self, origin, to):
+        from_label, to_label = self._label_to_position[origin], self._label_to_position[to]
+
+        return self._transition_matrix[from_label, to_label]
+
+

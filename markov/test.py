@@ -30,6 +30,15 @@ class ProcessTest(unittest.TestCase):
         self.assertEqual(process.initial_probability("a"), 0.4)
 
 
+    def test_returning_transition_probability(self):
+        transition_matrix = np.matrix([[0.5, 0.5], [0.25, 0.75]])
+        initial_probabilities = np.array([0.4, 0.6])
+
+        process = Process(transition_matrix, initial_probabilities, state_labels=["a", "b"])
+
+        self.assertEqual(process.transition_probability("b", "a"), 0.25)
+
+
 
 
 if __name__ == '__main__':
