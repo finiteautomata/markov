@@ -1,42 +1,42 @@
-from process import Process
+from model import Model
 import numpy as np
 import unittest
 
-class ProcessTest(unittest.TestCase):
-    def test_creating_a_process_with_one_state_creates_default_labels(self):
+class ModelTest(unittest.TestCase):
+    def test_creating_a_Model_with_one_state_creates_default_labels(self):
         transition_matrix = np.matrix([0.5])
         initial_probabilities = np.array([1.0])
 
-        process = Process(transition_matrix, initial_probabilities)
+        model = Model(transition_matrix, initial_probabilities)
 
         # Beware that assertCountEqual is 'assertItemsEqual'
-        self.assertCountEqual(process.state_labels, [0])
+        self.assertCountEqual(model.state_labels, [0])
 
-    def test_creating_process_with_labels(self):
+    def test_creating_Model_with_labels(self):
         transition_matrix = np.matrix([[0.5, 0.5], [0.25, 0.75]])
         initial_probabilities = np.array([0.4, 0.6])
 
-        process = Process(transition_matrix, initial_probabilities, state_labels=["a", "b"])
+        model = Model(transition_matrix, initial_probabilities, state_labels=["a", "b"])
 
-        self.assertCountEqual(process.state_labels, ["a", "b"])
+        self.assertCountEqual(model.state_labels, ["a", "b"])
 
 
     def test_returning_initial_probability(self):
         transition_matrix = np.matrix([[0.5, 0.5], [0.25, 0.75]])
         initial_probabilities = np.array([0.4, 0.6])
 
-        process = Process(transition_matrix, initial_probabilities, state_labels=["a", "b"])
+        model = Model(transition_matrix, initial_probabilities, state_labels=["a", "b"])
 
-        self.assertEqual(process.initial_probability("a"), 0.4)
+        self.assertEqual(model.initial_probability("a"), 0.4)
 
 
     def test_returning_transition_probability(self):
         transition_matrix = np.matrix([[0.5, 0.5], [0.25, 0.75]])
         initial_probabilities = np.array([0.4, 0.6])
 
-        process = Process(transition_matrix, initial_probabilities, state_labels=["a", "b"])
+        model = Model(transition_matrix, initial_probabilities, state_labels=["a", "b"])
 
-        self.assertEqual(process.transition_probability("b", "a"), 0.25)
+        self.assertEqual(model.transition_probability("b", "a"), 0.25)
 
 
 if __name__ == '__main__':

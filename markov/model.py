@@ -1,4 +1,4 @@
-class Process:
+class Model:
     # Creates a Markov Process with transition_matrix
     # transition_matrix must be a rectangular matrix of nxn
     # initial_probabilities must be an array of length n
