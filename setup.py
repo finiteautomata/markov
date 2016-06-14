@@ -10,5 +10,6 @@ setup(name='markov',
       install_requires=[
           'numpy',
       ],
+      test_suite="tests",
       packages=['markov'],
       zip_safe=False)

@@ -1,4 +1,4 @@
-from model import Model
+from markov.model import Model
 import numpy as np
 import unittest
 
