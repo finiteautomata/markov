@@ -1,20 +1,36 @@
 class Process:
+    # Creates a Markov Process with transition_matrix
+    # transition_matrix must be a rectangular matrix of nxn
+    # initial_probabilities must be an array of length n
+    # Optional arguments:
+    #   - state_labels:
     def __init__(self,
         transition_matrix,
         initial_probabilities,
         state_labels=None):
-        self.transition_matrix = transition_matrix
-        self.initial_probabilities = initial_probabilities
+        self._transition_matrix = transition_matrix
+        self._initial_probabilities = initial_probabilities
 
-        self.create_state_labels(state_labels)
+        self.__create_state_labels__(state_labels)
 
-    def create_state_labels(self, state_labels):
-        no_states = self.transition_matrix.shape[0]
+    def __create_state_labels__(self, state_labels):
+        no_states = self._transition_matrix.shape[0]
 
         if state_labels:
             if len(state_labels) != no_states:
                 raise TypeError("Number of labels not equal to number of states")
-            self.state_labels = state_labels
+            state_labels = state_labels
         else:
-            self.state_labels = list(range(no_states))
+            state_labels = range(no_states)
+
+        self._label_to_position = dict(zip(state_labels, range(no_states)))
+
+    @property
+    def state_labels(self):
+        return self._label_to_position.keys()
+
+    def initial_probability(self, label):
+        pos = self._label_to_position[label]
+
+        return self._initial_probabilities[pos]
 
