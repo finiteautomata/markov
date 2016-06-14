@@ -39,7 +39,5 @@ class ProcessTest(unittest.TestCase):
         self.assertEqual(process.transition_probability("b", "a"), 0.25)
 
 
-
-
 if __name__ == '__main__':
     unittest.main()

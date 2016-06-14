@@ -7,5 +7,8 @@ setup(name='markov',
       author='Juan Manuel Perez',
       author_email='jmperez.85@gmail.com',
       license='MIT',
+      install_requires=[
+          'numpy',
+      ],
       packages=['markov'],
       zip_safe=False)
